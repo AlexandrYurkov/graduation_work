@@ -1,73 +1,72 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.1.0">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36" version="26.1.0">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
-    <mxGraphModel dx="1302" dy="508" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="984" dy="647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="HN79gu9vjqqRwiPUkB8u-1" value="Server логики и взаимодействия с БД" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.servers;" parent="1" vertex="1">
           <mxGeometry x="590" y="215" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-1" value="" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="280" y="70" width="210" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-2" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-2" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="20" y="220" width="70" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-5" value="Телеграмм клиент" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7.misc.iphone;strokeColor=#c0c0c0;" vertex="1" parent="1">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-5" value="Телеграмм клиент" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7.misc.iphone;strokeColor=#c0c0c0;" parent="1" vertex="1">
           <mxGeometry x="120" y="200" width="40" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-6" value="" style="html=1;strokeWidth=1;shadow=0;dashed=0;shape=mxgraph.ios7.misc.wifi;fillColor=#007AFF;strokeColor=none;buttonText=;strokeColor2=#222222;fontColor=#222222;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;align=center;sketch=0;" vertex="1" parent="1">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-6" value="" style="html=1;strokeWidth=1;shadow=0;dashed=0;shape=mxgraph.ios7.misc.wifi;fillColor=#007AFF;strokeColor=none;buttonText=;strokeColor2=#222222;fontColor=#222222;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;align=center;sketch=0;" parent="1" vertex="1">
           <mxGeometry x="127.5" y="225" width="25" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-7" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.data;" vertex="1" parent="1">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-7" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.data;" parent="1" vertex="1">
           <mxGeometry x="850" y="210" width="90" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-8" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.globe;" vertex="1" parent="1">
-          <mxGeometry x="360" y="110" width="60" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-9" value="Внешние сервера телеграмм" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.servers;" vertex="1" parent="1">
-          <mxGeometry x="555" y="10" width="60" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-10" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.pointer;" vertex="1" parent="1">
-          <mxGeometry x="580" y="20" width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.025;exitY=0.688;exitDx=0;exitDy=0;exitPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="EzdP8AsZ3fRB3_ttAOTW-5" target="EzdP8AsZ3fRB3_ttAOTW-1">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.025;exitY=0.688;exitDx=0;exitDy=0;exitPerimeter=0;startArrow=classic;startFill=1;" parent="1" source="EzdP8AsZ3fRB3_ttAOTW-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="540" y="270" as="sourcePoint" />
-            <mxPoint x="640" y="270" as="targetPoint" />
-            <Array as="points" />
+            <mxPoint x="340" y="130" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="190" y="255" />
+              <mxPoint x="190" y="130" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-12" value="API" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="EzdP8AsZ3fRB3_ttAOTW-11">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-13" value="" style="endArrow=classic;html=1;rounded=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="EzdP8AsZ3fRB3_ttAOTW-1">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-12" value="API" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="EzdP8AsZ3fRB3_ttAOTW-11" connectable="0" vertex="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="330" y="298" as="sourcePoint" />
-            <mxPoint x="580" y="280" as="targetPoint" />
-            <Array as="points" />
+            <mxPoint x="21" y="-9" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-14" value="API" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="EzdP8AsZ3fRB3_ttAOTW-13">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-13" value="" style="endArrow=classic;html=1;rounded=0;startArrow=classic;startFill=1;" parent="1" edge="1" target="HN79gu9vjqqRwiPUkB8u-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="95" as="sourcePoint" />
+            <mxPoint x="570" y="285" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="570" y="95" />
+              <mxPoint x="650" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-14" value="API" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="EzdP8AsZ3fRB3_ttAOTW-13" connectable="0" vertex="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-15" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="EzdP8AsZ3fRB3_ttAOTW-9">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="440" y="90" as="sourcePoint" />
-            <mxPoint x="490" y="40" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-16" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.044;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" target="EzdP8AsZ3fRB3_ttAOTW-7">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-16" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.044;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" parent="1" target="EzdP8AsZ3fRB3_ttAOTW-7" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="710" y="270" as="sourcePoint" />
             <mxPoint x="810" y="270" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-17" value="Spring JDBC" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="EzdP8AsZ3fRB3_ttAOTW-16">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-17" value="Spring JDBC" style="edgeLabel;resizable=0;html=1;;align=center;verticalAlign=middle;" parent="EzdP8AsZ3fRB3_ttAOTW-16" connectable="0" vertex="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-18" value="Server PostgreSQL" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-18" value="Server PostgreSQL" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="830" y="330" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GmZS3c5M6frHBA-xg14e-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="350" y="80" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-9" value="Внешние сервера телеграмм" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.servers;" parent="GmZS3c5M6frHBA-xg14e-1" vertex="1">
+          <mxGeometry width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EzdP8AsZ3fRB3_ttAOTW-10" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.pointer;" parent="GmZS3c5M6frHBA-xg14e-1" vertex="1">
+          <mxGeometry x="15" y="15" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

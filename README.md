@@ -20,8 +20,9 @@ UserCase:
 
 ### Схема:
 
-![screenshot](img.png)
+![screenshot](img1.png)
 
 ### UML диаграмма классов 
 
 ![screenshot](class.png)
+

@@ -22,7 +22,7 @@ UserCase:
 
 ![screenshot](img1.png)
 
-### DTO слой 
+### UML диаграмма классов 
 
-![screenshot](DTO.png)
+![screenshot](class.png)
 

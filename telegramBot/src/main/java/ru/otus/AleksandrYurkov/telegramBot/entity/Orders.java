@@ -20,10 +20,12 @@ public class Orders {
     public Long id;
 
     @Column(value = "customer_id")
-    public Long customerId;
+    @MappedCollection(idColumn = "id")
+    public Customer customer;
 
     @Column(value = "master_id")
-    public Long masterId;
+    @MappedCollection(idColumn = "id")
+    public Master master;
 
     @Column(value = "date_time")
     public String dateTime;

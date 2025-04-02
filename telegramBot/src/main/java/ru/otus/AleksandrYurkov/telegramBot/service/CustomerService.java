@@ -27,7 +27,9 @@ public class CustomerService {
     public Optional<Customer> getCustomerById(Long id) {
         return customerRepository.findById(id);
     }
-
+    public Optional<Customer> findByTelegramId(Customer customer) {
+        return customerRepository.findByTelegramId(customer.getTelegramId(), customer.getTelephone());
+    }
     public void createCustomer(Customer customer) {
         customerRepository.save(customer);
     }

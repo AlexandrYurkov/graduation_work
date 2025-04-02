@@ -14,7 +14,9 @@ import ru.otus.AleksandrYurkov.telegramBot.dto.CustomerDTO;
 import ru.otus.AleksandrYurkov.telegramBot.entity.Customer;
 import ru.otus.AleksandrYurkov.telegramBot.service.CustomerService;
 
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -38,6 +40,11 @@ public class CustomerController {
         customerService.validateCustomer(customerDTO);
         customerService.createCustomer(new Customer(customerDTO));
         return  HttpStatus.CREATED;
+    }
+
+    @GetMapping("/all")
+    public List<CustomerDTO> getAllCustomers() {
+        return customerService.getAllCustomers().stream().map(CUSTOMER_DTO).collect(Collectors.toList());
     }
 //дальше должен идти запрос услуг (as profession) либо register возвращать список услуг
 

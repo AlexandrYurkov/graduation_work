@@ -5,11 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 import ru.otus.AleksandrYurkov.telegramBot.dto.CustomerDTO;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -32,8 +36,9 @@ public class Customer {
     @Column(value = "telegram_id")
     private String telegramId;
 
-    @MappedCollection(idColumn = "customer_id")
-    private Set<Orders> orders;
+    @Transient
+    @MappedCollection(idColumn = "master_id")
+    private List<Orders> orders;
 
     public Customer(CustomerDTO customerDTO) {
         this.id = null;
@@ -41,5 +46,6 @@ public class Customer {
         this.firstname = customerDTO.firstname();
         this.telephone = customerDTO.telephone();
         this.telegramId = customerDTO.telegramId();
+        orders = new ArrayList<>();
     }
 }

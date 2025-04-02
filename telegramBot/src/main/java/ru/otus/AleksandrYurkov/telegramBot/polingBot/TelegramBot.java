@@ -2,12 +2,15 @@ package ru.otus.AleksandrYurkov.telegramBot.polingBot;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.otus.AleksandrYurkov.telegramBot.config.BotConfig;
+import ru.otus.AleksandrYurkov.telegramBot.dto.OrderDTO;
 import ru.otus.AleksandrYurkov.telegramBot.entity.*;
 import ru.otus.AleksandrYurkov.telegramBot.service.*;
 
@@ -16,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Slf4j
 @Component
 @AllArgsConstructor
 public class TelegramBot extends TelegramLongPollingBot {
@@ -25,23 +29,20 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final MasterService masterService;
     private final MasterProfessionService masterProfessionService;
     private final DateTimeService dateTimeService;
+    private final OrdersService ordersService;
     private ValidationService validationService;
-    private final Orders newOrders = new Orders();
-
 
     // Хранилище состояний пользователей
-    private Map<Long, UserState> userStates = new HashMap<>(); // хз как его сделать бином
+    private Map<Long, UserState> userStates; // хз как его сделать бином
 
     @Override
     public String getBotUsername() {
         return botConfig.getName();
     }
-
     @Override
     public String getBotToken() {
         return botConfig.getToken();
     }
-
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
@@ -58,8 +59,8 @@ public class TelegramBot extends TelegramLongPollingBot {
                         sendMsg(chatId, "Пожалуйста, напиши своё имя");
                         userState.customer.setTelegramId(update.getMessage().getChat().getFirstName());
                         userState.setCurrentStep(UserState.Step.NAME);
-                        userStates.put(chatId, userState);
                     }
+                    userStates.put(chatId, userState);
                     break;
                 case NAME:
                     if (validationService.validateString(message)) {
@@ -92,16 +93,15 @@ public class TelegramBot extends TelegramLongPollingBot {
                             "Имя: " + userState.customer.getFirstname() + "\n" +
                             "Фамилия: " + userState.customer.getLastname() + "\n" +
                             "Телефон: " + userState.customer.getTelephone());
-
                     customerService.createCustomer(userState.customer);
-                    newOrders.setCustomer(userState.customer);
                     List<Profession> professions = masterService.getAllProfessions();
                     sendMsg(chatId, "Выберите необходимую услугу по номеру:\n");
                     for (int i = 0; i < professions.size(); i++) {
                         sendMsg(chatId, (i + 1) + " : " + professions.get(i).getName() + "\n");
                     }
                     userState.setCurrentStep(UserState.Step.PROFESSION_NUMBER);
-                    // записать в order customer_id
+                    userState.newOrders.setCustomerId(customerService.findByTelegramId(userState.customer).get().getId());
+                    userStates.put(chatId, userState);
                     break;
                 case PROFESSION_NUMBER:
                     int professionSize = masterService.getAllProfessions().size();
@@ -117,28 +117,29 @@ public class TelegramBot extends TelegramLongPollingBot {
                                         master.get().getFirstname() + "\n"); // выводим фактический id мастера
                             }
                             userState.setCurrentStep(UserState.Step.MASTER_NUMBER);
-                            break;
                         } else {
                             sendMsg(chatId, "Некорректный ввод. Введите число из списка профессий\n");
-                            break;
                         }
+                        userStates.put(chatId, userState);
+                        break;
                     } catch (NumberFormatException e) {
                         sendMsg(chatId, "Некорректный ввод. Введите число \n");
                     }
                 case MASTER_NUMBER:
-//                    получаем айди профессии
-                    // можно записать в order customer_id
-//                    по нему находим в табл дата свободное время, возвращаем листом
-//                    лист выводим и даем выбор клиенту
-//                    меняем userState.setCurrentStep.DATE
                     try {
                         int inputNumber = Integer.parseInt(message);
-                        newOrders.setMaster(masterService.getMasterById((long) inputNumber).orElse(null));
+                        userState.master = masterService.getMasterById((long) inputNumber).orElse(null);
+                        if (userState.master != null) {
+                            userState.newOrders.setMasterId(userState.master.getId());
+                        }
+
                         List<DateTime> dateList = dateTimeService.getAllMastersById((long) inputNumber);
-                        for(int i = 0; i < dateList.size(); i++) {
-                            sendMsg(chatId, dateList.get(i).getId() + " : " + dateList.get(i).getDate() + "\n");
+                        sendMsg(chatId, "Выберете удобное для вас время: \n");
+                        for (DateTime dateTime : dateList) {
+                            sendMsg(chatId, dateTime.getId() + " : " + dateTime.getDate() + "\n");
                         }
                         userState.setCurrentStep(UserState.Step.DATE);
+                        userStates.put(chatId, userState);
                         break;
 
                     } catch (NumberFormatException e) {
@@ -146,23 +147,29 @@ public class TelegramBot extends TelegramLongPollingBot {
                     }
 
                 case DATE:
-                    int inputNumber = Integer.parseInt(message);
-                    DateTime time = dateTimeService.getDateTime((long) inputNumber).orElse(null);
-                    if(time != null) {
-                        dateTimeService.delete((long) inputNumber);
-                        newOrders.setDateTime(time.getDate());
-                        sendMsg(chatId, newOrders.getCustomer().getFirstname()
-                                + ", ваша запись подтверждена! \n"
-                                + newOrders.getDateTime() + "\n" + "К мастеру : "
-                                + newOrders.getMaster().lastname + " "
-                                + newOrders.getMaster().firstname);
-                        userStates.remove(chatId);
-                    } else {
-                        sendMsg(chatId,"Что то пошло не так \n По пробуйте еще раз. Введите команду /start");
-                        userState.setCurrentStep(UserState.Step.START);
-                        userStates.remove(chatId);
+                    int inputNumber = Integer.parseInt(message);//добавить проверку на parsInt
+                    try {
+                        DateTime time = dateTimeService.getDateTime((long) inputNumber).orElse(null);
+                        if(time != null) {
+                            dateTimeService.delete((long) inputNumber);
+                            userState.newOrders.setDateTime(time.getDate());
+
+                            sendMsg(chatId, userState.customer.getFirstname()
+                                    + ", ваша запись подтверждена! \n"
+                                    + userState.newOrders.getDateTime() + "\n" + "К мастеру : "
+                                    + userState.master.getLastname() + " "
+                                    + userState.master.getFirstname());
+                            ordersService.creatOrders(userState.newOrders);
+                            userState.setCurrentStep(UserState.Step.START);
+                            userStates.remove(chatId);
+                        } else {
+                            sendMsg(chatId,"Что то пошло не так \n По пробуйте еще раз.");
+    //                        userState.setCurrentStep(UserState.Step.START);
+                        }
+                        break;
+                    } catch (NumberFormatException e) {
+                        sendMsg(chatId, "Некорректный ввод. Введите число \n");
                     }
-                    break;
             }
         }
     }
@@ -185,7 +192,9 @@ public class TelegramBot extends TelegramLongPollingBot {
             START, NAME, SURNAME, TELEPHONE, PROFESSION_NUMBER, MASTER_NUMBER, DATE
         }
 
-        private Customer customer = new Customer(); // мб можно убрать и вынести
+        private Customer customer = new Customer();
+        private Orders newOrders = new Orders();
+        private Master master = null;// мб можно убрать и вынести
         private Step currentStep = Step.START;
 
     }

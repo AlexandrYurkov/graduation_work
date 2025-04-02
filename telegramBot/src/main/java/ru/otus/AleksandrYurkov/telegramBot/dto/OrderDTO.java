@@ -1,5 +1,6 @@
 package ru.otus.AleksandrYurkov.telegramBot.dto;
 
+import lombok.NoArgsConstructor;
 import ru.otus.AleksandrYurkov.telegramBot.entity.Customer;
 import ru.otus.AleksandrYurkov.telegramBot.entity.Master;
 
